@@ -1,6 +1,5 @@
 package org.jmeld.ui;
 
-import com.jidesoft.swing.JideTabbedPane;
 import org.jdesktop.swingworker.SwingWorker;
 import org.jmeld.ui.util.ImageUtil;
 import org.jmeld.util.StringUtil;
@@ -57,7 +56,7 @@ public class VersionControlComparison extends SwingWorker<String, Object> {
                         "Error opening file",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                JideTabbedPane tabbedPane = mainPanel.getTabbedPane();
+                JTabbedPane tabbedPane = mainPanel.getTabbedPane();
                 if (tabbedPane != null) {
                     if (contentPanel != null) {
                         tabbedPane.setSelectedComponent(contentPanel);

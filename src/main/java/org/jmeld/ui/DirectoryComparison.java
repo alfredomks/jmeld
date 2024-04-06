@@ -1,6 +1,5 @@
 package org.jmeld.ui;
 
-import com.jidesoft.swing.JideTabbedPane;
 import org.jdesktop.swingworker.SwingWorker;
 import org.jmeld.settings.util.Filter;
 import org.jmeld.ui.util.ImageUtil;
@@ -81,7 +80,7 @@ public class DirectoryComparison extends SwingWorker<String, Object> {
             if (result != null) {
                 JOptionPane.showMessageDialog(mainPanel, result, "Error opening file", JOptionPane.ERROR_MESSAGE);
             } else {
-                JideTabbedPane tabbedPane = mainPanel.getTabbedPane();
+                JTabbedPane tabbedPane = mainPanel.getTabbedPane();
                 if (tabbedPane != null) {
                     if (contentPanel != null) {
                         // Already opened!

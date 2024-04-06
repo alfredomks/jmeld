@@ -46,8 +46,6 @@ public class JMeld
     public void run() {
         JFrame frame;
 
-        LookAndFeelManager.getInstance().install();
-
         frame = new JFrame("JMeld");
         jmeldPanel = new JMeldPanel();
         frame.add(jmeldPanel);

@@ -18,7 +18,7 @@ package org.jmeld.ui;
 
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
-import com.jidesoft.swing.JideTabbedPane;
+
 import org.jmeld.Version;
 import org.jmeld.settings.JMeldSettings;
 import org.jmeld.ui.action.ActionHandler;
@@ -66,7 +66,7 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
     public final Option STANDALONE_INSTALLKEY_OPTION;
 
     private ActionHandler actionHandler;
-    private JideTabbedPane tabbedPane;
+    private JTabbedPane tabbedPane;
     private JPanel barContainer;
     private AbstractBarDialog currentBarDialog;
     private SearchBarDialog searchBarDialog;
@@ -77,7 +77,7 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
     public JMeldPanel() {
         setFocusable(true);
 
-        tabbedPane = new JideTabbedPane();
+        tabbedPane = new JTabbedPane();
         addAncestorListener(new AncestorListener() {
             public void ancestorAdded(AncestorEvent event) {
                 start();
@@ -98,7 +98,7 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
         actions = new Actions();
     }
 
-    public JideTabbedPane getTabbedPane() {
+    public JTabbedPane getTabbedPane() {
         return tabbedPane;
     }
 
@@ -110,26 +110,26 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
         started = true;
 
         getTabbedPane().setFocusable(false);
-        getTabbedPane().setShowCloseButtonOnTab(true);
-        getTabbedPane().setShowCloseButtonOnSelectedTab(true);
-
-        if (!SHOW_TABBEDPANE_OPTION.isEnabled()) {
-            getTabbedPane().setShowTabArea(false);
-        }
+//        getTabbedPane().setShowCloseButtonOnTab(true);
+//        getTabbedPane().setShowCloseButtonOnSelectedTab(true);
+//
+//        if (!SHOW_TABBEDPANE_OPTION.isEnabled()) {
+//            getTabbedPane().setShowTabArea(false);
+//        }
 
         // Pin the tabshape because the defaults do not look good
         //   on lookandfeels other than JGoodies Plastic.
-        getTabbedPane().setTabShape(JideTabbedPane.SHAPE_OFFICE2003);
+//        getTabbedPane().setTabShape(JideTabbedPane.SHAPE_OFFICE2003);
 
         // Watch out: initActions uses 'tabbedPane' so this statement should be
         //   after the instantiation of tabbedPane.
         initActions();
 
-        if (SHOW_TABBEDPANE_OPTION.isEnabled()) {
-            // Watch out: actionHandler gets initialized in 'initActions' so this
-            //   statement should be AFTER initActions();
-            getTabbedPane().setCloseAction(getAction(actions.EXIT));
-        }
+//        if (SHOW_TABBEDPANE_OPTION.isEnabled()) {
+//            // Watch out: actionHandler gets initialized in 'initActions' so this
+//            //   statement should be AFTER initActions();
+//            getTabbedPane().setCloseAction(getAction(actions.EXIT));
+//        }
 
         setLayout(new BorderLayout());
         addToolBar();
@@ -778,7 +778,7 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
         return false;
     }
 
-    public static AbstractContentPanel getAlreadyOpen(JideTabbedPane tabbedPane, String contentId) {
+    public static AbstractContentPanel getAlreadyOpen(JTabbedPane tabbedPane, String contentId) {
         for (AbstractContentPanel contentPanel : getContentPanelList(tabbedPane)) {
             if (ObjectUtil.equals(contentPanel.getId(), contentId)) {
                 System.out.println("already open: " + contentId);
@@ -816,7 +816,7 @@ public class JMeldPanel extends JPanel implements ConfigurationListenerIF, Prope
         return (AbstractContentPanel) getTabbedPane().getSelectedComponent();
     }
 
-    public static  List<AbstractContentPanel> getContentPanelList(JideTabbedPane tabbedPane) {
+    public static  List<AbstractContentPanel> getContentPanelList(JTabbedPane tabbedPane) {
         List<AbstractContentPanel> result;
 
         result = new ArrayList<AbstractContentPanel>();
